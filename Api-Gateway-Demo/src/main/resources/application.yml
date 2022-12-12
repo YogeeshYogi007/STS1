@@ -1,0 +1,24 @@
+server:
+  port: 8764
+
+eureka:
+  instance:
+    hostname: localhost
+
+
+spring:
+  application:
+    name: Api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Customer-Registration-Demo
+          uri: lb://Customer-Registration-Demo
+          predicates:
+            - Path=/addCustomer
+            - Path=/get
+            - Path=/get/id/**
+            - Path=/get/firstName/**
+            - Path=/get/email/**
+            - Path=/add/**
+            - Path=/Update/**
